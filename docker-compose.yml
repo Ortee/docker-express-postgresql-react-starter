@@ -1,6 +1,22 @@
 server:
   image: node:6
-  command: node index.js
+  command: npm run server
   working_dir: /app
   volumes:
     - .:/app
+  environment:
+    PORT: 3000
+    CONNECTION_STRING: postgres://user:password@db/db
+  ports:
+    - "3000:3000"
+    - "5858:5858"
+  links:
+    - db
+db:
+  image: postgres
+  expose:
+    - 5437
+  environment:
+    POSTGRES_PASSWORD: password
+    POSTGRES_USER: user
+    POSTGRES_DB: db
