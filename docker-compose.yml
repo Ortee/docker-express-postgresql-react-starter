@@ -1,0 +1,6 @@
+server:
+  image: node:6
+  command: node index.js
+  working_dir: /app
+  volumes:
+    - .:/app
