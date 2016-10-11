@@ -1,7 +1,6 @@
 var debug = process.env.NODE_ENV !== "production";
 var webpack = require('webpack');
 var path = require('path');
-const PORT = process.env.PORT || 4000;
 
 module.exports = {
   node: { fs: 'empty' },

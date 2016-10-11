@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "backend": "nodemon -L --debug=5858 index.js & webpack --watch",
-    "frontend": "webpack-dev-server --port 4000 --inline --hot --watch",
+    "frontend": "webpack-dev-server --host 0.0.0.0 --port 4000 --inline --hot --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
