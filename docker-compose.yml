@@ -1,6 +1,6 @@
 server:
   image: node:6
-  command: npm run server
+  command: npm run backend
   working_dir: /app
   volumes:
     - .:/app
@@ -12,6 +12,16 @@ server:
     - "5858:5858"
   links:
     - db
+frontend:
+  image: node:6
+  command: npm run frontend
+  working_dir: /app/
+  volumes:
+    - .:/app/
+  environment:
+    PORT: 4000
+  ports:
+    - "4000:4000"
 db:
   image: postgres
   expose:
