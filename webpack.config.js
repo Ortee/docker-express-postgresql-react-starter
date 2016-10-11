@@ -13,7 +13,7 @@ module.exports = {
       {
         test: /\.s?css$/,
         loaders: ['style','css','sass'] ,
-        include: path.join(__dirname, 'src')
+        include: path.join(__dirname, 'frontend')
       },
       {
         test: /\.jsx?$/,
