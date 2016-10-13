@@ -8,7 +8,7 @@ export default class Author extends Component {
   }
 
   componentWillMount() {
-    request.get('/author')
+    request.get('/api/author')
     .accept('application/json')
     .then((response) => {
       this.setState({
