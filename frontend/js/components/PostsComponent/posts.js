@@ -20,19 +20,27 @@ export default class Posts extends Component {
   }
 
   render() {
+    console.log(this.state.posts);
+    if(this.state.posts.length === 0){
+      return(
+        <section>
+          <h1>Posts List from database:</h1>
+          Migrate and Seed database.
+        </section>)
+    }
     return (
       <section>
         <h1>Posts List from database:</h1>
         <ol>
-          {this.state.posts.map( elem => {
-            return
-              <Post
-                id={elem.id}
-                name={elem.name}
-                content={elem.content}
-                createdAt={elem.createdAt}
-                updatedAt={elem.updatedAt}
-              />
+          {this.state.posts.map( (elem, index) => {
+            return <Post
+              key={index}
+              id={elem.id}
+              name={elem.name}
+              content={elem.content}
+              createdAt={elem.createdAt}
+              updatedAt={elem.updatedAt}
+            />
           })}
         </ol>
       </section>
