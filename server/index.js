@@ -2,8 +2,10 @@ const app = require('express')();
 const path = require('path');
 const express = require('express');
 const fallback = require('express-history-api-fallback');
-const pgp = require('pg-promise')(/*options*/);
-const db = pgp('postgres://user:password@db/db');
+const pgp = require('pg-promise')();
+const env = process.env.NODE_ENV || 'development';
+const config = require(__dirname + '/config/config.json')[env];
+const db = pgp(process.env[config.use_env_variable]);
 
 let root = path.join(__dirname,'/../');
 
