@@ -6,14 +6,9 @@ module.exports = {
   node: { fs: 'empty' },
   context: path.join(__dirname),
   devtool: debug ? 'inline-sourcemap' : null,
-  entry: './frontend/js/app.js',
+  entry: './tests/frontend/test-index.js',
   module: {
     loaders: [
-      {
-        test: /\.s?css$/,
-        loaders: ['style','css','sass'] ,
-        include: path.join(__dirname, 'frontend')
-      },
       {
         test: /\.jsx?$/,
         exclude: /(node_modules)/,
@@ -26,12 +21,22 @@ module.exports = {
       { test: /\.json$/,
         exclude: /node_modules/,
         loader: 'json-loader'
+      },
+      {
+          test: /sinon\.js$/,
+          loader: 'imports?define=>false,require=>false'
       }
-    ]
+    ],
+  },
+  externals: {
+  'cheerio': 'window',
+  'react/addons': true, // important!!
+  'react/lib/ExecutionEnvironment': true,
+  'react/lib/ReactContext': true
   },
   output: {
     path: __dirname,
-    filename: '/bundle.js'
+    filename: '/tests/tests-bundle.js'
   },
   plugins: debug ? [] : [
    new webpack.HotModuleReplacementPlugin(),

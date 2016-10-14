@@ -4,3 +4,4 @@ npm-debug.log
 .DS_Store
 tmp/
 bundle.js
+/tests/tests-bundle.js
