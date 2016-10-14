@@ -31,7 +31,7 @@ $ docker-compose down
 >> When you edit only frontend better use port 4000 because it automatically refreshes browser (files .js & .scss)<br><br>
 >> Only port 3000 is working with database and Express
 
-## Migrate & Seeds PostgreSql
+## Migrate & Seed PostgreSql
 Run docker containers
 ```
 $ docker-compose up
@@ -46,11 +46,11 @@ $ docker exec -it [ID] /bin/bash
 ```
 Run migration
 ```
-$ npm run db:migrate
+root@[CONTAINER_ID]$ npm run db:migrate
 ```
 Run seeders
 ```
-$ npm run db:seed
+root@[CONTAINER_ID]$ npm run db:seed
 ```
 ## Testing server & frontend
 Run server tests
@@ -67,15 +67,15 @@ Enter server container
 ```
 $ docker ps
 $ docker exec -it [ID] /bin/bash
-$ cd server
+root@[CONTAINER_ID]$ cd server
 ```
 Run Sequelize task
 ```
-$ ../node_modules/.bin/sequelize [TASK]
+root@[CONTAINER_ID]$ ../node_modules/.bin/sequelize [TASK]
 ```
 EXAMPLE
 ```
-$  ../node_modules/.bin/sequelize model:create --name Post --attributes name:string,content:text
+root@[CONTAINER_ID]$  ../node_modules/.bin/sequelize model:create --name Post --attributes name:string,content:text
 ```
 
 ```
