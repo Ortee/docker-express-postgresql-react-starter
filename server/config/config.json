@@ -1,0 +1,11 @@
+{
+  "development": {
+    "use_env_variable": "CONNECTION_STRING_DEV"
+  },
+  "test": {
+    "use_env_variable": "CONNECTION_STRING_TEST"
+  },
+  "production": {
+    "use_env_variable": "CONNECTION_STRING_PROD"
+  }
+}

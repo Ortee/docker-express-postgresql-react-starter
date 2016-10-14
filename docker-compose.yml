@@ -6,7 +6,7 @@ server:
     - .:/app
   environment:
     PORT: 3000
-    CONNECTION_STRING: postgres://user:password@db/db
+    CONNECTION_STRING_DEV: postgres://user:password@db/db
   ports:
     - "3000:3000"
     - "5858:5858"
@@ -25,7 +25,7 @@ frontend:
 db:
   image: postgres
   expose:
-    - 5437
+    - 5432
   environment:
     POSTGRES_PASSWORD: password
     POSTGRES_USER: user
