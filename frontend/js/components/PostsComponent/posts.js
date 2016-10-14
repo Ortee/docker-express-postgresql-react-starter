@@ -20,7 +20,6 @@ export default class Posts extends Component {
   }
 
   render() {
-    console.log(this.state.posts);
     if(this.state.posts.length === 0){
       return(
         <section>

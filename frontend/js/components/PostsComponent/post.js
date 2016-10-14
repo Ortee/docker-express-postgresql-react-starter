@@ -7,7 +7,6 @@ export default class Post extends Component {
   }
 
   render() {
-    console.log("POST");
     return(
       <section>
         <li>
