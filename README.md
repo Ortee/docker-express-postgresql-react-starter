@@ -62,7 +62,18 @@ Run frontend tests
 $ npm run build:frontend:tests
 $ npm run run:frontend:tests
 ```
-## Add custom model/seeder/migrations
+## Enter PostgreSql
+```
+$ docker ps
+$ docker exec -it [POSTGRES_CONTAINER_ID] /bin/bash
+root@[CONTAINER_ID]$ su - postgres
+root@[CONTAINER_ID]$ psql db
+```
+Show tables
+```
+root@[CONTAINER_ID]$ \d
+```
+## Add custom model/seeder/migration
 Enter server container
 ```
 $ docker ps
