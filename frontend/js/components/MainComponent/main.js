@@ -7,7 +7,10 @@ export default class Main extends Component {
     return (
       <section>
         <h1>Hello, Main Component.</h1>
-        <Link to={'/author'}>Author</Link>
+        <ul>
+          <li><Link to={'/author'}>Author</Link></li>
+          <li><Link to={'/posts'}>Posts from database</Link></li>
+        </ul>
       </section>
     );
   }
