@@ -37,7 +37,7 @@ app.get('/api/posts', function (req, res) {
       res.status(404).send('Not found');
     });
 });
-console.log(getTimestamp());
+
 app.post('/api/posts', function (req, res){
   let request = req.body[0];
 
