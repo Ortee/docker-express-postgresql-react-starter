@@ -18,6 +18,10 @@ app.use(bodyParser.urlencoded({extended: true}));
 //Mocks
 const authorMock = require('./mocks/author.json')
 
+function getTimestamp() {
+  return new Date(new Date().getTime() + (new Date().getTimezoneOffset() * 60000) + (3600000*2));
+}
+
 app.get('/api/author', function (req, res) {
   res.setHeader('Content-Type', 'application/json');
   res.send(JSON.stringify(authorMock));
@@ -33,11 +37,12 @@ app.get('/api/posts', function (req, res) {
       res.status(404).send('Not found');
     });
 });
-
+console.log(getTimestamp());
 app.post('/api/posts', function (req, res){
   let request = req.body[0];
+
   db.one('INSERT INTO "Posts" (name, content, created_at, updated_at) VALUES ($1, $2, $3, $4) RETURNING id',
-  [request.name, request.content, request.created_at, request.updated_at])
+  [request.name, request.content, getTimestamp(), getTimestamp()])
     .then(function(){
       res.status(200).send('Success');
     })
