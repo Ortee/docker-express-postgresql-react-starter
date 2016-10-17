@@ -22,7 +22,6 @@ export function showPosts() {
 
   return (dispatch) => {
     request.then((response) => {
-      console.log('response',response.body);
       dispatch({ type: 'SHOW_POSTS', payload: response.body });
     });
   }

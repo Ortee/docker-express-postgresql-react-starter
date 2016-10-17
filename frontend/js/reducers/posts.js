@@ -11,7 +11,9 @@ function posts(state = [], action) {
           updatedAt: Date.now()
         }];
       case 'SHOW_POSTS' :
-        action.payload.map((post) => state=[...state, post]);
+        action.payload.map((post) =>
+          state = [...state, post]
+        );
         return state;
       default:
         return state;

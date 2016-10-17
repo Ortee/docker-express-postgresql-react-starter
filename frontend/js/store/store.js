@@ -5,13 +5,7 @@ import thunk from 'redux-thunk';
 
 import rootReducer from '../reducers/index';
 
-import posts from '../mocks/mockPosts';
-
-const defaultState = {
-  posts
-};
-
-const store = createStore(rootReducer, defaultState, applyMiddleware(thunk));
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 export const history = syncHistoryWithStore(browserHistory, store);
 
