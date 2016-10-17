@@ -1,11 +1,18 @@
 import req from 'superagent';
 
 export function addPost(name, content) {
-  return {
-    type: 'ADD_POST',
-    name,
-    content
-  }
+  const request = req.post('/api/posts')
+   .set('Content-type', 'application/json');
+   return (dispatch) => {
+     request.send([{ name: name, content: content }])
+      .end(function(err, res){
+         if (err || !res.ok) {
+           dispatch({ type: 'ADD_POSTS', res: false });
+         } else {
+           dispatch({ type: 'ADD_POSTS', res: true, req:{'name':name, 'content': content}});
+         }
+     });
+   }
 }
 
 export function removePost(postId) {

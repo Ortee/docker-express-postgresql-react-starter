@@ -8,6 +8,9 @@ export default class Posts extends Component {
     this.state = {posts: []};
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+  componentDidMount(){
+    this.props.showPosts();
+  }
 
   handleSubmit(e) {
     e.preventDefault();
@@ -36,7 +39,6 @@ export default class Posts extends Component {
               post={post}
             />)}
         </ol>
-        <button onClick={this.props.showPosts.bind()}>LOAD FROM DB</button>
       </section>
     );
   }

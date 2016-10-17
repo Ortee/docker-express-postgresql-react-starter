@@ -40,10 +40,10 @@ app.get('/api/posts', function (req, res) {
 
 app.post('/api/posts', function (req, res){
   let request = req.body[0];
-
   db.one('INSERT INTO "Posts" (name, content, created_at, updated_at) VALUES ($1, $2, $3, $4) RETURNING id',
   [request.name, request.content, getTimestamp(), getTimestamp()])
     .then(function(){
+      res.setHeader('accept', 'application/json');
       res.status(200).send('Success');
     })
     .catch(function (error) {
