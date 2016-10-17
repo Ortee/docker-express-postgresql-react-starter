@@ -1,3 +1,5 @@
+import req from 'superagent';
+
 export function addPost(name, content) {
   return {
     type: 'ADD_POST',
@@ -14,7 +16,14 @@ export function removePost(postId) {
 }
 
 export function showPosts() {
-  return {
-    type: 'SHOW_POSTS'
+  const request = req
+  .get('/api/posts')
+  .accept('application/json');
+
+  return (dispatch) => {
+    request.then((response) => {
+      console.log('response',response.body);
+      dispatch({ type: 'SHOW_POSTS', payload: response.body });
+    });
   }
 }
