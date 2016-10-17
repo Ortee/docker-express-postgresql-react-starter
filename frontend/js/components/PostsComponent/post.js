@@ -11,13 +11,14 @@ export default class Post extends Component {
       <section>
         <li>
           <ul>
-            <li>ID: {this.props.id}</li>
-            <li>NAME: {this.props.name}</li>
-            <li>CONTENT: {this.props.content}</li>
-            <li>CREATEDAT: {this.props.createdAt}</li>
-            <li>UPDATEDAT: {this.props.updatedAt}</li>
+            <li>U_CODE: {this.props.post.id}</li>
+            <li>NAME: {this.props.post.name}</li>
+            <li>CONTENT: {this.props.post.content}</li>
+            <li>CREATEDAT: {this.props.post.createdAt}</li>
+            <li>UPDATEDAT: {this.props.post.updatedAt}</li>
           </ul>
         </li>
+        <br/>
       </section>
     );
   }
