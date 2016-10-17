@@ -1,6 +1,7 @@
 const app = require('express')();
 const path = require('path');
 const express = require('express');
+const bodyParser = require('body-parser');
 const fallback = require('express-history-api-fallback');
 const pgp = require('pg-promise')();
 const env = process.env.NODE_ENV || 'development';
@@ -11,6 +12,8 @@ const root = path.join(__dirname,'/../');
 
 app.use(express.static(root));
 app.use(fallback('index.html', {root: root}));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 
 //Mocks
 const authorMock = require('./mocks/author.json')
@@ -28,6 +31,18 @@ app.get('/api/posts', function (req, res) {
     })
     .catch(function (error) {
       res.status(404).send('Not found');
+    });
+});
+
+app.post('/api/posts', function (req, res){
+  let request = req.body[0];
+  db.one('INSERT INTO "Posts" (name, content, created_at, updated_at) VALUES ($1, $2, $3, $4) RETURNING id',
+  [request.name, request.content, request.created_at, request.updated_at])
+    .then(function(){
+      res.status(200).send('Success');
+    })
+    .catch(function (error) {
+      res.status(404).send('Error');
     });
 });
 

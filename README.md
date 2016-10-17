@@ -84,10 +84,11 @@ Run Sequelize task
 ```
 root@[CONTAINER_ID]$ ../node_modules/.bin/sequelize [TASK]
 ```
-EXAMPLE
+EXAMPLE: Create model and migration name: Post with attributes name & content
 ```
-root@[CONTAINER_ID]$  ../node_modules/.bin/sequelize model:create --name Post --attributes name:string,content:text
+root@[CONTAINER_ID]$  ../node_modules/.bin/sequelize model:create --name Post --attributes name:string,content:text  --underscored
 ```
+Hint: Express don't like camelCase. Use always --underscored param.
 
 ```
 Available tasks
