@@ -1,13 +1,14 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Router, Route, Link , browserHistory } from 'react-router';
 import Post from './post';
 
-export default class Posts extends Component {
+class Posts extends Component {
   constructor(props) {
     super(props);
     this.state = {posts: []};
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
   componentDidMount(){
     this.props.showPosts();
   }
@@ -43,3 +44,5 @@ export default class Posts extends Component {
     );
   }
 }
+
+export default Posts;

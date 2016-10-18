@@ -76,6 +76,7 @@
     "react-router": "^2.8.1",
     "react-router-redux": "^4.0.6",
     "redux": "^3.6.0",
+    "redux-devtools-extension": "^1.0.0",
     "redux-thunk": "^2.1.0",
     "sequelize": "^3.24.3",
     "sequelize-cli": "^2.4.0",

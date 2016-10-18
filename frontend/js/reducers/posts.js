@@ -14,7 +14,13 @@ function posts(state = [], action) {
         );
         return state;
       case 'REMOVE_POST' :
-        //TODO
+        if(action.res === true){
+          return [
+            ...state.slice(0,action.req.indexInState),
+            ...state.slice(action.req.indexInState + 1)
+          ]
+        }
+        return state;
       default:
         return state;
     }

@@ -39,15 +39,27 @@ app.get('/api/posts', function (req, res) {
 });
 
 app.post('/api/posts', function (req, res){
-  let request = req.body[0];
+  let body = req.body[0];
   db.one('INSERT INTO "Posts" (name, content, created_at, updated_at) VALUES ($1, $2, $3, $4) RETURNING id',
-  [request.name, request.content, getTimestamp(), getTimestamp()])
+  [body.name, body.content, getTimestamp(), getTimestamp()])
     .then(function(){
       res.setHeader('accept', 'application/json');
       res.status(200).send('Success');
     })
     .catch(function (error) {
       res.status(404).send('Error');
+    });
+});
+
+app.delete('/api/postremove', function (req, res){
+  req.accepts('application/json');
+  let body = req.body[0];
+  db.none('delete from "Posts" where name = $1', body.name)
+    .then(function(){
+      res.send('',204);
+    })
+    .catch(function (error) {
+      res.send('',409);
     });
 });
 

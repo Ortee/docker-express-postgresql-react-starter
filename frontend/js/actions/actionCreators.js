@@ -15,18 +15,25 @@ export function addPost(name, content) {
    }
 }
 
-export function removePost(postId) {
-  return {
-    type: 'REMOVE_POST',
-    postId
-  }
+export function removePost(name, indexInState) {
+  const request = req.del('/api/postremove')
+   .set('Content-type', 'application/json');
+   return (dispatch) => {
+     request.send([{ name: name }])
+      .end(function(err, res){
+         if (err || !res.ok) {
+           dispatch({ type: 'REMOVE_POST', res: false });
+         } else {
+           dispatch({ type: 'REMOVE_POST', res: true, req:{ 'name':name, 'indexInState': indexInState}});
+         }
+     });
+   }
 }
 
 export function showPosts() {
   const request = req
   .get('/api/posts')
   .accept('application/json');
-
   return (dispatch) => {
     request.then((response) => {
       dispatch({ type: 'SHOW_POSTS', payload: response.body });
