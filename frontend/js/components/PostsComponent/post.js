@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Router, Route, Link , browserHistory } from 'react-router';
 
-export default class Post extends Component {
+class Post extends Component {
   constructor(props) {
     super(props);
   }
@@ -11,14 +11,15 @@ export default class Post extends Component {
       <section>
         <li>
           <ul>
-            <li>ID: {this.props.id}</li>
-            <li>NAME: {this.props.name}</li>
-            <li>CONTENT: {this.props.content}</li>
-            <li>CREATEDAT: {this.props.createdAt}</li>
-            <li>UPDATEDAT: {this.props.updatedAt}</li>
+            <li>NAME: {this.props.post.name}</li>
+            <li>CONTENT: {this.props.post.content}</li>
+            <li><button onClick={this.props.removePost.bind(null, this.props.post.name, this.props.i)}>REMOVE</button></li>
           </ul>
         </li>
+        <br/>
       </section>
     );
   }
 }
+
+export default Post;

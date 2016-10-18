@@ -5,8 +5,8 @@ module.exports = {
       return queryInterface.bulkInsert('Posts', [{
         name: 'Test Post from database',
         content: 'Post content from postgres',
-        createdAt: '2016-10-14T20:31:40.000Z',
-        updatedAt: '2016-10-14T20:31:40.000Z'
+        created_at: '2016-10-14T20:31:40.000Z',
+        updated_at: '2016-10-14T20:31:40.000Z'
       }], {});
   },
   down: function (queryInterface, Sequelize) {

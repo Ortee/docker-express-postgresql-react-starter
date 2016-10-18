@@ -1,48 +1,48 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Router, Route, Link , browserHistory } from 'react-router';
-import request from 'superagent';
 import Post from './post';
 
-export default class Posts extends Component {
+class Posts extends Component {
   constructor(props) {
     super(props);
     this.state = {posts: []};
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentWillMount() {
-    request.get('/api/posts')
-    .accept('application/json')
-    .then((response) => {
-      this.setState({
-        posts: response.body
-      });
-    })
+  componentDidMount(){
+    this.props.showPosts();
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    const name = this.refs.name.value;
+    const content = this.refs.content.value;
+    this.props.addPost(name, content);
+    this.refs.commentForm.reset();
   }
 
   render() {
-    if(this.state.posts.length === 0){
-      return(
-        <section>
-          <h1>Posts List from database:</h1>
-          Migrate and Seed database.
-        </section>)
-    }
     return (
       <section>
-        <h1>Posts List from database:</h1>
+        <h1>Posts Component:</h1>
+        <p>ADD POST:</p>
+        <form ref="commentForm" onSubmit={this.handleSubmit}>
+          <p>name: <input type="text" ref="name" placeholder="name"/></p>
+          <p>content: <input type="text" ref="content" placeholder="content"/></p>
+          <button type="submit">Submit</button>
+        </form>
+        <p>POST LIST:</p>
         <ol>
-          {this.state.posts.map( (elem, index) => {
-            return <Post
-              key={index}
-              id={elem.id}
-              name={elem.name}
-              content={elem.content}
-              createdAt={elem.createdAt}
-              updatedAt={elem.updatedAt}
-            />
-          })}
+          {this.props.posts.map((post, i) =>
+            <Post {...this.props}
+              key={i}
+              i={i}
+              post={post}
+            />)}
         </ol>
       </section>
     );
   }
 }
+
+export default Posts;
