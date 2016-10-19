@@ -2,6 +2,8 @@
 
 > :whale: Docker Express PostgreSql React Starter Kit
 
+![alt tag](http://tech.orteedev.pl/stack.jpg)
+
 ## Install:
 ```
 [Docker](https://www.docker.com/)   
