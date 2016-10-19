@@ -9,10 +9,7 @@ function posts(state = [], action) {
         }
         return state;
       case 'SHOW_POSTS' :
-        action.payload.map((post) =>
-          state = [...state, post]
-        );
-        return state;
+        return action.payload;
       case 'REMOVE_POST' :
         if(action.res === true){
           return [
