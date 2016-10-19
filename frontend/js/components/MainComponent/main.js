@@ -7,6 +7,7 @@ class Main extends Component {
   constructor(props){
     super(props)
   }
+
   render() {
     return (
       <Container>
@@ -17,10 +18,10 @@ class Main extends Component {
           <nav>
             <Nav inline>
               <NavItem className="header-item">
-                <Link to={'/posts'}><NavLink>Posts</NavLink></Link>
+                <Link className="nav-link" to={'/posts'}>Posts</Link>
               </NavItem>
               <NavItem className="header-item">
-                <Link to={'/author'}><NavLink>Author</NavLink></Link>
+                <Link className="nav-link" to={'/author'}>Author</Link>
               </NavItem>
               <NavItem className="header-item">
                 <NavLink href="http://github.com/ortee"><i class="fa fa-github" /> Github</NavLink>
