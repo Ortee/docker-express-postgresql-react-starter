@@ -16,7 +16,7 @@ ReactDOM.render(
   <Provider store={store}>
     <Router history={hashHistory}>
       <Route path="/" component={App}>
-        <IndexRoute component={Author}></IndexRoute>
+        <IndexRoute component={Posts}></IndexRoute>
         <Route path="/author" name="author" component={Author}/>
         <Route path="/posts" name="posts" component={Posts}/>
         <Route path='*' component={NotFound} />

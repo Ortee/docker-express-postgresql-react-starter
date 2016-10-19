@@ -6,7 +6,7 @@ export default class Author extends Component {
     super(props);
     this.state = {author: []};
   }
-  
+
   componentWillMount() {
     request.get('/api/author')
     .accept('application/json')
@@ -18,10 +18,8 @@ export default class Author extends Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <article>
-        <h1>Author Component:</h1>
         <a href={this.state.author.url} rel="author">{this.state.author.username}</a>
         <p>{this.state.author.description}</p>
       </article>

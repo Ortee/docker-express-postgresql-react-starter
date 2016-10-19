@@ -1,22 +1,38 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Router, Route, Link , browserHistory } from 'react-router';
-require('./main.scss');
+import { Navbar, NavbarBrand, Nav, NavItem, NavLink, Container, Row, Col } from 'reactstrap';
+import './main.scss';
 
-export default class Main extends Component {
+class Main extends Component {
   constructor(props){
     super(props)
   }
   render() {
     return (
-      <section>
-        <h1>Main Menu</h1>
-        <ul>
-          <li><Link to={'/author'}>Author</Link></li>
-          <li><Link to={'/posts'}>Posts from database</Link></li>
-        </ul>
-        <hr></hr>
-        {React.cloneElement(this.props.children, this.props)}
-      </section>
+      <Container>
+        <Row>
+          <header>
+            <p className="header-title">Docker Express PostgreSql React Starter</p>
+          </header>
+          <nav>
+            <Nav inline>
+              <NavItem className="header-item">
+                <Link to={'/posts'}><NavLink>Posts</NavLink></Link>
+              </NavItem>
+              <NavItem className="header-item">
+                <Link to={'/author'}><NavLink>Author</NavLink></Link>
+              </NavItem>
+              <NavItem className="header-item">
+                <NavLink href="http://github.com/ortee">Github</NavLink>
+              </NavItem>
+            </Nav>
+          </nav>
+          <hr />
+          {React.cloneElement(this.props.children, this.props)}
+        </Row>
+      </Container>
     );
   }
 }
+
+export default Main;
