@@ -23,7 +23,7 @@ class Main extends Component {
                 <Link to={'/author'}><NavLink>Author</NavLink></Link>
               </NavItem>
               <NavItem className="header-item">
-                <NavLink href="http://github.com/ortee">Github</NavLink>
+                <NavLink href="http://github.com/ortee"><i class="fa fa-github" /> Github</NavLink>
               </NavItem>
             </Nav>
           </nav>

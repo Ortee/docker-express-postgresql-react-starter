@@ -26,6 +26,14 @@ module.exports = {
       { test: /\.json$/,
         exclude: /node_modules/,
         loader: 'json-loader'
+      },
+      {
+          test: /\.(woff|woff2|eot|ttf)$/i,
+          loader: 'file-loader?name=fonts/[name]-[hash].[ext]'
+      },
+      {
+          test: /\.(jpe?g|png|gif|svg)$/i,
+          loader: 'file-loader?name=images/[name]-[hash].[ext]'
       }
     ]
   },

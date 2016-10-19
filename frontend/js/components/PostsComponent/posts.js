@@ -34,14 +34,14 @@ class Posts extends Component {
             <Button type="submit" color="success" className="addPost-button">Submit</Button>
           </form>
         </Col>
-        
+
         <Table bordered>
           <thead>
             <tr>
               <th>#</th>
               <th>First Name</th>
               <th>Last Name</th>
-              <th>#</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>

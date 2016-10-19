@@ -1,14 +1,15 @@
-.remove-button{
-  width: 100%;
-}
 .addPost-form{
   border: 1px solid #eceeef;
   padding-top: 10px;
   padding-bottom: 10px;
 }
-.addPost-input{
-  width: 100% !important;
+.form-inline .form-control {
+  width: 100%;
+  margin-bottom: 8px;
 }
-.addPost-button{
+.form-inline .addPost-button{
+  width: 100%;
+}
+.remove-button{
   width: 100%;
 }
