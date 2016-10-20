@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "backend": "nodemon -L --debug=5858 index.js & webpack --watch",
-    "frontend": "webpack-dev-server --host 0.0.0.0 --port 4000 --inline --hot --watch",
+    "frontend": "webpack-dev-server --host 0.0.0.0 --port 4000 --inline --hot --watch --content-base ./public",
     "run:server:tests": "mocha --require tests/scripts/mocha_runner tests/server/test-index.js",
     "build:frontend:tests": "webpack --config webpack.test.config.js",
     "run:frontend:tests": "mocha --require tests/scripts/mocha_runner ./tests/tests-bundle.js",

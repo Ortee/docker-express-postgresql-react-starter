@@ -22,7 +22,7 @@ export default class Author extends Component {
       <section>
         <a href={this.state.author.url} rel="author">{this.state.author.username}</a>
         <p>{this.state.author.description}</p>
-        <img src="/frontend/public/assets/dependencies.jpeg" alt="dependencies" />
+        <img src="/assets/dependencies.jpeg" alt="dependencies" />
       </section>
     );
   }
