@@ -18,6 +18,9 @@ app.use(bodyParser.urlencoded({extended: true}));
 //Mocks
 const authorMock = require('./mocks/author.json')
 
+//classes
+var Post = require('./class/post');
+
 function getTimestamp() {
   return new Date(new Date().getTime() + (new Date().getTimezoneOffset() * 60000) + (3600000*2));
 }
@@ -28,38 +31,38 @@ app.get('/api/author', function (req, res) {
 });
 
 app.get('/api/posts', function (req, res) {
-  db.any('SELECT * FROM "Posts"')
+  db.any('SELECT name, content FROM "Posts"')
     .then(function (data) {
       res.setHeader('Content-Type', 'application/json');
-      res.send(JSON.stringify(data));
+      Posts = data.map((elem) => new Post(elem.name, elem.content));
+      res.send(JSON.stringify(Posts));
     })
     .catch(function (error) {
-      res.status(404).send('Not found');
+      res.status(404).send();
     });
 });
 
 app.post('/api/posts', function (req, res){
-  let body = req.body[0];
-  db.one('INSERT INTO "Posts" (name, content, created_at, updated_at) VALUES ($1, $2, $3, $4) RETURNING id',
-  [body.name, body.content, getTimestamp(), getTimestamp()])
+  req.accepts('application/json');
+  var NewPost = new Post(req.body[0].name, req.body[0].content);
+  db.one('INSERT INTO "Posts" (name, content, created_at, updated_at) VALUES ($1, $2, $3, $4) ON CONFLICT (content) DO NOTHING RETURNING id',
+   [NewPost.getName(), NewPost.getContent(), getTimestamp(), getTimestamp()])
     .then(function(){
-      res.setHeader('accept', 'application/json');
-      res.status(200).send('Success');
+      res.status(201).send();
     })
     .catch(function (error) {
-      res.status(404).send('Error');
+      res.status(404).send();
     });
 });
 
 app.delete('/api/postremove', function (req, res){
   req.accepts('application/json');
-  let body = req.body[0];
-  db.none('delete from "Posts" where name = $1', body.name)
+  db.none('DELETE FROM "Posts" WHERE NAME = $1', req.body[0].name)
     .then(function(){
-      res.send('',204);
+      res.status(204).send();
     })
     .catch(function (error) {
-      res.send('',409);
+      res.status(409).send();
     });
 });
 
