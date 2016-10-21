@@ -48,21 +48,23 @@ $ docker exec -it [ID] /bin/bash
 ```
 Run migration
 ```
-root@[CONTAINER_ID]$ npm run db:migrate
+root@[SERVER_CONTAINER_ID]$ npm run db:migrate
 ```
 Run seeders
 ```
-root@[CONTAINER_ID]$ npm run db:seed
+root@[SERVER_CONTAINER_ID]$ npm run db:seed
 ```
 ## Testing server & frontend
+Always run tests in server container!
+
 Run server tests
 ```
-$ npm run run:server:tests
+root@[SERVER_CONTAINER_ID$ npm run run:server:tests
 ```
 Run frontend tests
 ```
-$ npm run build:frontend:tests
-$ npm run run:frontend:tests
+root@[SERVER_CONTAINER_ID$ npm run build:frontend:tests
+root@[SERVER_CONTAINER_ID$ npm run run:frontend:tests
 ```
 ## Enter PostgreSql
 ```
