@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { Router, Route, Link , browserHistory } from 'react-router';
-import { Button, Form, FormGroup, Label, Table, Col } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Table, Col, Alert } from 'reactstrap';
 import Post from './post';
 import './posts.scss';
 
@@ -33,6 +33,16 @@ class Posts extends Component {
               <input type="text" ref="content" placeholder="content" className="form-control addPost-input"/>
             <Button type="submit" color="success" className="addPost-button">Submit</Button>
           </form>
+        </Col>
+        <Col xs="8" className="post-alert-box">
+          {this.props.alerts.map((alert, i) => {
+            return <Alert key={i}
+                          className="post-alert"
+                          color={ alert.style }
+                          onClick={this.props.removeAlert.bind(null, alert.id)}>
+                          { alert.text }
+            </Alert>
+          })}
         </Col>
 
         <Table bordered>
