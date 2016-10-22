@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { Router, Route, Link , browserHistory } from 'react-router';
 import { Navbar, NavbarBrand, Nav, NavItem, NavLink, Container, Row, Col } from 'reactstrap';
 import './main.scss';
+import Alerts from '../AlertsComponent/alerts';
 
 class Main extends Component {
   constructor(props){
@@ -11,6 +12,7 @@ class Main extends Component {
   render() {
     return (
       <Container>
+        <Alerts {...this.props} />
         <Row>
           <header>
             <p className="header-title">Docker Express PostgreSql React Starter</p>

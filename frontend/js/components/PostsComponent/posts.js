@@ -34,17 +34,6 @@ class Posts extends Component {
             <Button type="submit" color="success" className="addPost-button">Submit</Button>
           </form>
         </Col>
-        <Col xs="8" className="post-alert-box">
-          {this.props.alerts.map((alert, i) => {
-            return <Alert key={i}
-                          className="post-alert"
-                          color={ alert.style }
-                          onClick={this.props.removeAlert.bind(null, alert.id)}>
-                          { alert.text }
-            </Alert>
-          })}
-        </Col>
-
         <Table bordered>
           <thead>
             <tr>
