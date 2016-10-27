@@ -1,5 +1,5 @@
 server:
-  image: node:6
+  image: node:7
   command: npm run backend
   working_dir: /app
   volumes:
@@ -13,7 +13,7 @@ server:
   links:
     - db
 frontend:
-  image: node:6
+  image: node:7
   command: npm run frontend
   working_dir: /app/
   volumes:
