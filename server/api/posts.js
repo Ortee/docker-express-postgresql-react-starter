@@ -12,10 +12,6 @@ const authorMock = require('../mocks/author.json')
 //classes
 var Post = require('../class/post');
 
-function getTimestamp() {
-  return new Date(new Date().getTime() + (new Date().getTimezoneOffset() * 60000) + (3600000*2));
-}
-
 router.get('/api/author', function (req, res) {
   res.setHeader('Content-Type', 'application/json');
   res.send(JSON.stringify(authorMock));
@@ -36,8 +32,8 @@ router.get('/api/posts', function (req, res) {
 router.post('/api/posts', function (req, res){
   req.accepts('application/json');
   var NewPost = new Post(req.body[0].name, req.body[0].content);
-  db.query('INSERT INTO "Posts" (name, content, created_at, updated_at) VALUES ($1, $2, $3, $4) ON CONFLICT (content) DO NOTHING',
-   [NewPost.getName(), NewPost.getContent(), getTimestamp(), getTimestamp()])
+  db.query('INSERT INTO "Posts" (name, content, created_at, updated_at) VALUES ($1, $2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP) ON CONFLICT (content) DO NOTHING',
+   [NewPost.getName(), NewPost.getContent()])
     .then(function(){
       res.status(201).send();
     })
