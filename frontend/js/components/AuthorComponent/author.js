@@ -12,9 +12,9 @@ export default class Author extends Component {
     .accept('application/json')
     .then((response) => {
       this.setState({
-        author: response.body
+        author: response.body,
       });
-    })
+    });
   }
 
   render() {

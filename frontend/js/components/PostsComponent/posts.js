@@ -1,6 +1,5 @@
-import React, { Component, PropTypes } from 'react';
-import { Router, Route, Link , browserHistory } from 'react-router';
-import { Button, Form, FormGroup, Label, Table, Col, Alert } from 'reactstrap';
+import React, { Component } from 'react';
+import { Button, Label, Table, Col } from 'reactstrap';
 import Post from './post';
 import './posts.scss';
 
@@ -10,23 +9,15 @@ class Posts extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentDidMount(){
+  componentDidMount = () => {
     this.props.showPosts();
-  }
-
-  handleSubmit(e) {
-    e.preventDefault();
-    const name = this.refs.name.value;
-    const content = this.refs.content.value;
-    this.props.addPost(name, content);
-    this.refs.commentForm.reset();
   }
 
   render() {
     return (
       <section>
         <Col xs="4" className="addPost-form">
-          <form ref="commentForm" onSubmit={this.handleSubmit} class="form-inline">
+          <form ref="commentForm" onSubmit={this.handleSubmit} className="form-inline">
               <Label hidden>Name</Label>
               <input type="text" ref="name" placeholder="name" className="form-control addPost-input"/>
               <Label hidden>Content</Label>
@@ -40,7 +31,7 @@ class Posts extends Component {
               <th>#</th>
               <th>First Name</th>
               <th>Last Name</th>
-              <th></th>
+              <th>{''}</th>
             </tr>
           </thead>
           <tbody>
@@ -55,6 +46,20 @@ class Posts extends Component {
       </section>
     );
   }
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const name = this.refs.name.value;
+    const content = this.refs.content.value;
+    this.props.addPost(name, content);
+    this.refs.commentForm.reset();
+  }
 }
+
+Posts.propTypes = {
+  posts: React.PropTypes.array,
+  addPost: React.PropTypes.func,
+  showPosts: React.PropTypes.func,
+};
+
 
 export default Posts;

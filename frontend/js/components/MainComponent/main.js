@@ -1,12 +1,12 @@
-import React, { Component, PropTypes } from 'react';
-import { Router, Route, Link , browserHistory } from 'react-router';
-import { Navbar, NavbarBrand, Nav, NavItem, NavLink, Container, Row, Col } from 'reactstrap';
+import React, { Component } from 'react';
+import { Link } from 'react-router';
+import { Nav, NavItem, NavLink, Container, Row} from 'reactstrap';
 import './main.scss';
 import Alerts from '../AlertsComponent/alerts';
 
 class Main extends Component {
-  constructor(props){
-    super(props)
+  constructor(props) {
+    super(props);
   }
 
   render() {
@@ -26,7 +26,7 @@ class Main extends Component {
                 <Link className="nav-link" to={'/author'}>Author</Link>
               </NavItem>
               <NavItem className="header-item">
-                <NavLink href="http://github.com/ortee"><i class="fa fa-github" /> Github</NavLink>
+                <NavLink href="http://github.com/ortee"><i className="fa fa-github"/> Github</NavLink>
               </NavItem>
             </Nav>
           </nav>
@@ -37,5 +37,9 @@ class Main extends Component {
     );
   }
 }
+
+Main.propTypes =  {
+  children: React.PropTypes.element,
+};
 
 export default Main;
