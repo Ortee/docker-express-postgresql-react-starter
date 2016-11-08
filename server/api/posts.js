@@ -2,9 +2,8 @@
 var express = require('express');
 var router = express.Router();
 const pgp = require('pg-promise')();
-const path = require('path');
 const env = process.env.NODE_ENV || 'development';
-const config = require(path.join(__dirname, '/../config/config.json')[env]);
+const config = require(__dirname + '/../config/config.json')[env];
 const db = pgp(process.env[config.use_env_variable]);
 
 //Mocks
