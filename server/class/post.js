@@ -2,13 +2,13 @@
 module.exports =
   class Post {
     constructor(name, content) {
-      this.name = name;
-      this.content = content;
+      this.name = new String(name);
+      this.content = new String(content);
     }
-    getName(){
+    getName() {
       return this.name;
     }
-    getContent(){
+    getContent() {
       return this.content;
     }
-  }
+  };
