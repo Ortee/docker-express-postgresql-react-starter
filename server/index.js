@@ -1,3 +1,4 @@
+'use strict';
 const app = require('express')();
 const path = require('path');
 const express = require('express');
@@ -5,7 +6,7 @@ const bodyParser = require('body-parser');
 const fallback = require('express-history-api-fallback');
 
 
-const root = path.join(__dirname,'/../public/');
+const root = path.join(__dirname, '/../public/');
 
 var postsApi = require('./api/posts');
 

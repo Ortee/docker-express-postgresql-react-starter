@@ -1,3 +1,4 @@
+'use strict';
 module.exports =
   class Post {
     constructor(name, content) {
