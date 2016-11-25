@@ -1,9 +1,12 @@
 'use strict';
 module.exports =
   class Post {
-    constructor(name, content) {
+    constructor(name) {
       this.name = new String(name);
-      this.content = new String(content);
+    }
+    content(content) {
+      this.content = content;
+      return this;
     }
     getName() {
       return this.name;

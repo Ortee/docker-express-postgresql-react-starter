@@ -21,7 +21,7 @@ router.get('/api/posts', function(req, res) {
   db.any('SELECT name, content FROM "Posts"')
     .then(function(data) {
       res.setHeader('Content-Type', 'application/json');
-      const Posts = data.map((elem) => new Post(elem.name, elem.content));
+      const Posts = data.map((elem) => new Post(elem.name).content(elem.content));
       res.send(JSON.stringify(Posts));
     })
     .catch(function(error) {
@@ -31,7 +31,7 @@ router.get('/api/posts', function(req, res) {
 
 router.post('/api/posts', function(req, res) {
   req.accepts('application/json');
-  var NewPost = new Post(req.body[0].name, req.body[0].content);
+  var NewPost = new Post(req.body[0].name).content(req.body[0].content);
   db.query('INSERT INTO "Posts" (name, content, created_at, updated_at) VALUES ($1, $2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP) ON CONFLICT (content) DO NOTHING',
    [NewPost.getName(), NewPost.getContent()])
     .then(function() {
